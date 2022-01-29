@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 type Today struct {
 	date  int
@@ -98,7 +101,12 @@ func main() {
 	// GO2:
 	// 	fmt.Println("End")
 
-	var td Today                                        //Line 5
-	date, month, year, day := displayDetailsOfToday(td) //Line 12
-	fmt.Printf("%d %s %d %s \n", date, month, year, day)
+	// var td Today                                        //Line 5
+	// date, month, year, day := displayDetailsOfToday(td) //Line 12
+	// fmt.Printf("%d %s %d %s \n", date, month, year, day)
+
+	var u rune
+	u = 'a'
+	fmt.Println(u)
+	fmt.Println(reflect.TypeOf(u))
 }

@@ -10,11 +10,14 @@ type interfaceName interface{
 	method-1
 	method-2
 	.......
+	a = input("")
+	type a -> "any"
 }
 */
 
 type SalaryCalculator interface {
 	calculateSalary() int
+	getJobName() string
 }
 
 type PrintSalary interface {
@@ -22,8 +25,8 @@ type PrintSalary interface {
 }
 
 type Salary interface {
-	SalaryCalculator
-	PrintSalary
+	SalaryCalculator //-> calculateSalary() + getJobName()
+	PrintSalary      //-> Print()
 }
 
 // Struct Datatypes -----------
@@ -43,10 +46,6 @@ type Interger int
 
 // End -----------
 
-func (pj PermanentJob) Print() {
-	fmt.Println(pj.basicPay)
-}
-
 func (pj PermanentJob) calculateSalary() int {
 	return pj.basicPay
 }
@@ -55,7 +54,35 @@ func (pj PermanentJob) getJobName() string {
 	return "Permanent Job"
 }
 
-func (i Interger) print() {
+func (pj PermanentJob) Print() {
+	fmt.Println(pj.basicPay)
+}
+
+func (cj ContractJob) calculateSalary() int {
+	return cj.basicPay
+}
+
+func (cj ContractJob) getJobName() string {
+	return "Contract Job"
+}
+
+func (cj ContractJob) Print() {
+	fmt.Println(cj.basicPay)
+}
+
+func (fj FreelanceJob) calculateSalary() int {
+	return fj.basicPay
+}
+
+func (fj FreelanceJob) getJobName() string {
+	return "Freelance Job"
+}
+
+func (fj FreelanceJob) Print() {
+	fmt.Println(fj.basicPay)
+}
+
+func (i Interger) print() { //func(i int) print(){}
 	fmt.Println(i)
 }
 func (i Interger) calculateSalary() int {
@@ -66,6 +93,7 @@ func totalIncome(salaryCalc []SalaryCalculator) {
 	total := 0
 	for _, v := range salaryCalc {
 		total += v.calculateSalary()
+		fmt.Println(v.getJobName())
 	}
 	fmt.Println(total)
 }
@@ -84,20 +112,33 @@ func main() {
 	// total := salaryCalc.calculateSalary()
 	// fmt.Println(total)
 
-	j := Interger(1009)
-	j.print()
+	// j := Interger(1009) // type Interger int -> Var(value)
+	// j.print()
 
 	//Code-2
 	pj := PermanentJob{
 		basicPay: 10,
 	}
-	cj := PermanentJob{
+	cj := ContractJob{
 		basicPay: 20,
 	}
-	fj := PermanentJob{
+	fj := FreelanceJob{
 		basicPay: 30,
 	}
 
-	salaryCalc := []SalaryCalculator{pj, cj, fj}
-	totalIncome(salaryCalc)
+	// salaryCalc := []SalaryCalculator{pj, cj, fj}
+	// totalIncome(salaryCalc)
+
+	salary := []Salary{pj, cj, fj}
+	fmt.Println(salary)
+	salary[0].Print()
+	salary[1].Print()
+	salary[2].Print()
+
+	fmt.Println(salary)
+	for i := range salary {
+		fmt.Println(i)
+		// fmt.Println (salary[i].Print())
+	}
+	fmt.Sprintln("Nikhil")
 }
