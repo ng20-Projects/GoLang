@@ -1,8 +1,10 @@
 package main
 
+import "fmt"
+
 func Factorial(input int) int {
 	var fact int = input
-	if input < 0 {
+	if input < 1 {
 		if input == 0 {
 			return 1
 		} else {
@@ -17,7 +19,7 @@ func Factorial(input int) int {
 }
 
 func main() {
-	// var input int
-	// fmt.Scanln(&input)
-	// fmt.Println(Factorial(input))
+	var input int
+	fmt.Scanln(&input)
+	fmt.Println(Factorial(input))
 }

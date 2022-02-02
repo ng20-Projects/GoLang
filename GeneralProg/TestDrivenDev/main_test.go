@@ -1,8 +1,6 @@
 package main
 
-import (
-	"testing"
-)
+import "testing"
 
 func TestFactorial(t *testing.T) {
 	for _, cases := range testCases {
