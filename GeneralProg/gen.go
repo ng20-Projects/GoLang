@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 )
 
 type Today struct {
@@ -105,8 +104,60 @@ func main() {
 	// date, month, year, day := displayDetailsOfToday(td) //Line 12
 	// fmt.Printf("%d %s %d %s \n", date, month, year, day)
 
-	var u rune
-	u = 'a'
-	fmt.Println(u)
-	fmt.Println(reflect.TypeOf(u))
+	// var u rune
+	// u = 'a'
+	// fmt.Println(u)
+	// fmt.Println(reflect.TypeOf(u))
+
+	{
+		var arr [10]int
+		arr[0] = 1
+		arr[1] = 2
+		arr[2] = 3
+		for v := range arr {
+			arr[v] = v + 1
+		}
+		// arr[0] = 20
+		func(arrF [10]int) {
+			fmt.Printf("Value of arr: %v, Type of arr: %T\n", arrF, arrF)
+		}(arr)
+
+		// var slice []int
+		// slice = append(slice, 1)
+		// slice = append(slice, 2)
+		// for i := 3; i < 11; i++ {
+		// 	slice = append(slice, i)
+		// }
+		// func(sliceF []int) {
+		// 	fmt.Printf("Value of arr: %v, Type of arr: %T\n", sliceF, sliceF)
+		// }(slice)
+
+		// // var digits map[int]int //map is declared nil, hence nothing can be added to it later on
+		// var digits = make(map[int]int)
+		// digits[0] = 1
+		// digits[1] = 2
+		// for i := 0; i < 10; i++ {
+		// 	digits[i] = i + 1
+		// }
+		// func(digitsF map[int]int) {
+		// 	fmt.Println(digitsF)
+		// }(digits)
+	}
+
+	{
+		// var input interface{}
+
+		// input = 10
+		// fmt.Println(input)
+		// input = 10.02
+		// fmt.Println(input)
+		// input = true
+		// fmt.Println(input)
+		// input = "Data"
+		// fmt.Println(input)
+
+		// fmt.Scanln(&input)
+		// fmt.Println(input)
+	}
+
 }

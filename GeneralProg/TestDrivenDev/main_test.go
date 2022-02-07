@@ -3,45 +3,59 @@ package main
 import "testing"
 
 func TestFactorial(t *testing.T) {
-	for _, cases := range testCases {
-		if Factorial(cases.input) == cases.expected {
-			t.Logf("Pass : factorial(%d)", cases.input)
-		} else {
-			t.Fatalf("Fail : %s, wanted %d, got %d", cases.description, cases.expected, Factorial(cases.input))
-		}
+	type args struct {
+		input int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		// TODO: Add test cases.
+		{
+			"Factorial of -ve",
+			-1,
+			0,
+		},
+		{
+			"Factorial of 0",
+			0,
+			1,
+		},
+		{
+			"Factorial of 5",
+			5,
+			120,
+		},
+		{
+			"Factorial of 10",
+			10,
+			3628800,
+		},
+		{
+			"Factorial of 15",
+			15,
+			1307674368000,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Factorial(tt.args.input); got != tt.want {
+				t.Errorf("Factorial() = %v, want %v", got, tt.want)
+			}
+		})
 	}
 }
 
-func TestZeroFactorial(t *testing.T) {
-	if Factorial(0) == 1 {
-		t.Logf("Pass")
-		return
-	} else {
-		t.Fatalf("Fail: %s, wanted %d, got %d", "Factorial of Zero", 0, Factorial(0))
+func Test_main(t *testing.T) {
+	tests := []struct {
+		name string
+	}{
+		// TODO: Add test cases.
 	}
-}
-
-func TestFiveFactorial(t *testing.T) {
-	if Factorial(5) == 120 {
-		t.Logf("Pass")
-		return
-	} else {
-		t.Fatalf("Fail: %s, wanted %d, got %d", "Factorial of Five", 120, Factorial(0))
-	}
-}
-func TestTenFactorial(t *testing.T) {
-	if Factorial(10) == 3628800 {
-		t.Logf("Pass")
-		return
-	} else {
-		t.Fatalf("Fail: %s, wanted %d, got %d", "Factorial of Ten", 3628800, Factorial(0))
-	}
-}
-func TestFifteenFactorial(t *testing.T) {
-	if Factorial(15) == 1307674368000 {
-		t.Logf("Pass")
-		return
-	} else {
-		t.Fatalf("Fail: %s, wanted %d, got %d", "Factorial of Fifteen", 1307674368000, Factorial(0))
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			main()
+		})
 	}
 }
